@@ -5,11 +5,13 @@ import logging
 
 window = 100
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.WARNING)
 array = []
 array2 = []
+array3 = []
+array4 =  []
 
-f = open('dump1.csv')
+f = open('smoothed2.csv')
 csv_f = csv.reader(f)
 for row in csv_f:
     array.extend(row)
@@ -25,18 +27,37 @@ for i in range(len(array) - 1):
 # 		array[i] = array[i-1]
 
 #Averaging
-for i in range(len(array)-10):
-	entry = (int(array[i])+int(array[i+1])+int(array[i+2])+int(array[i+3])+int(array[i+4])+int(array[i+5])+int(array[i+6])+int(array[i+7])+int(array[i+8])+int(array[i+9]))/10
-	array2.append(entry)
-	logging.info(array[i])
+# for i in range(len(array)-10):
+# 	entry = (int(array[i])+int(array[i+1])+int(array[i+2])+int(array[i+3])+int(array[i+4])+int(array[i+5])+int(array[i+6])+int(array[i+7])+int(array[i+8])+int(array[i+9]))/10
+# 	array2.append(entry)
+# 	logging.info(array[i])
 	
+for i in range(len(array)-1):
+	entry = (int(array[i+1]) - int(array[i]))
+	array2.append(entry)
+
+for i in range(len(array2)-1):
+	if int(array2[i]) >= 0 and int(array2[i+1]) < 0:
+		entry = 1
+		array3.append(array[i])
+		array4.append(array[i])
+	else:
+		entry = 0
+		array3.append(min(array))
+
+print(array3)
+# for i in range(len(array3)):
+
 
 
 
 plt.figure(1)
-plt.subplot(2,1,1)
-plt.plot(array[1:window])
-plt.subplot(2,1,2)
+plt.subplot(3,1,1)
+plt.plot(array)
+plt.plot(array3)
+plt.subplot(3,1,2)
 plt.plot(array2)
+plt.subplot(3,1,3)
+plt.plot(array3)
 # plt.ylabel('some numbers')
 plt.show()
