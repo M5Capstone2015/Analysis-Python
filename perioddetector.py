@@ -1,3 +1,4 @@
+#!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3 -u
 import numpy
 import matplotlib.pyplot as plt
 import csv
@@ -10,6 +11,8 @@ array = []
 array2 = []
 array3 = []
 array4 =  []
+array5 =  []
+array6 = []
 
 f = open('smoothed2.csv')
 csv_f = csv.reader(f)
@@ -45,9 +48,28 @@ for i in range(len(array2)-1):
 		entry = 0
 		array3.append(min(array))
 
-print(array3)
-# for i in range(len(array3)):
+print(array4)
 
+
+#local maxima
+for i in range(len(array4)-2):
+	if int(array4[i+1]) > int(array4[i]) and int(array4[i+1]) > int(array4[i+2]):
+		array5.append(array4[i+1])
+
+print(array5)
+
+index = 0
+for i in range(len(array3)):
+	minimum = min(array3)
+	if array3[i] is array5[index]:
+		array6.append(array5[index])
+		if index < len(array5)-1:
+			print(array5[index])
+			index = index + 1
+	else:
+		array6.append(minimum)
+
+print(array6)
 
 
 
@@ -58,6 +80,6 @@ plt.plot(array3)
 plt.subplot(3,1,2)
 plt.plot(array2)
 plt.subplot(3,1,3)
-plt.plot(array3)
+plt.plot(array6)
 # plt.ylabel('some numbers')
 plt.show()
