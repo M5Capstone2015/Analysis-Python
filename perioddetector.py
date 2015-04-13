@@ -1,4 +1,3 @@
-#!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3 -u
 import numpy
 import matplotlib.pyplot as plt
 import csv
@@ -14,7 +13,7 @@ array4 =  []
 array5 =  []
 array6 = []
 
-f = open('smoothed2.csv')
+f = open('smoothed.csv')
 csv_f = csv.reader(f)
 for row in csv_f:
     array.extend(row)
@@ -46,9 +45,11 @@ for i in range(len(array2)-1):
 		array4.append(array[i])
 	else:
 		entry = 0
-		array3.append(min(array))
+		array3.append(min([int(i) for i in array]))
 
-print(array4)
+print("Min array " + str(min([int(i) for i in array])))
+print("Printing array")
+print(array)
 
 
 #local maxima
@@ -60,6 +61,7 @@ print(array5)
 
 index = 0
 for i in range(len(array3)):
+#    minimum = min([int(i) for i in array]))
 	minimum = min(array3)
 	if array3[i] is array5[index]:
 		array6.append(array5[index])
@@ -71,6 +73,11 @@ for i in range(len(array3)):
 
 print(array6)
 
+print("Printing array 3")
+print(array3)
+print("Array 3 mininum is " + str(min(array3)))
+print("Array e length is " + str(len(array3)))
+
 
 
 plt.figure(1)
@@ -81,5 +88,5 @@ plt.subplot(3,1,2)
 plt.plot(array2)
 plt.subplot(3,1,3)
 plt.plot(array6)
-# plt.ylabel('some numbers')
+plt.ylabel('some numbers')
 plt.show()
