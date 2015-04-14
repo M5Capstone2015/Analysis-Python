@@ -13,7 +13,9 @@ array4 =  []
 array5 =  []
 array6 = []
 
-f = open('smoothed.csv')
+beats_array = []
+
+f = open('smoothed8.csv')
 csv_f = csv.reader(f)
 for row in csv_f:
     array.extend(row)
@@ -23,6 +25,17 @@ logging.info(array)
 for i in range(len(array) - 1):
 	logging.info(array[i])
 
+x = open("beats2.csv")
+csv_x = csv.reader(f)
+print("Printing my shitz")
+for row in csv_x:
+    print(row)
+    beats_array.extend(row)
+    logging.debug(row)
+logging.info(beats_array)
+
+for i in range(len(beats_array) - 1):
+	logging.info(beats_array[i])
 # #Remove Outliers
 # for i in range(len(array)):
 # 	if int(array[i]) > 130:
@@ -80,10 +93,12 @@ print("Array e length is " + str(len(array3)))
 
 
 
+
 plt.figure(1)
 plt.subplot(3,1,1)
 plt.plot(array)
 plt.plot(array3)
+plt.plot(beats_array)
 plt.subplot(3,1,2)
 plt.plot(array2)
 plt.subplot(3,1,3)
