@@ -7,12 +7,13 @@ import logging
 window = 100
 
 logging.basicConfig(level=logging.WARNING)
-array = []
+array =  []
 array2 = []
 array3 = []
-array4 =  []
-array5 =  []
+array4 = []
+array5 = []
 array6 = []
+array7 = []
 
 f = open('smoothed2.csv')
 csv_f = csv.reader(f)
@@ -71,6 +72,12 @@ for i in range(len(array3)):
 
 print(array6)
 
+# Averaging
+for i in range(len(array6)-10):
+	entry = (int(array6[i])+int(array6[i+1])+int(array6[i+2])+int(array6[i+3])+int(array6[i+4])+int(array6[i+5])+int(array6[i+6])+int(array6[i+7])+int(array6[i+8])+int(array6[i+9]))/10
+	array7.append(entry)
+	# logging.info(array[i])
+
 
 
 plt.figure(1)
@@ -80,6 +87,6 @@ plt.plot(array3)
 plt.subplot(3,1,2)
 plt.plot(array2)
 plt.subplot(3,1,3)
-plt.plot(array6)
+plt.plot(array7)
 # plt.ylabel('some numbers')
 plt.show()
