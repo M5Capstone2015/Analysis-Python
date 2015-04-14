@@ -15,7 +15,7 @@ array5 = []
 array6 = []
 array7 = []
 
-f = open('smoothed2.csv')
+f = open('dump7.csv')
 csv_f = csv.reader(f)
 for row in csv_f:
     array.extend(row)
@@ -73,9 +73,10 @@ for i in range(len(array3)):
 print(array6)
 
 # Averaging
-for i in range(len(array6)-10):
-	entry = (int(array6[i])+int(array6[i+1])+int(array6[i+2])+int(array6[i+3])+int(array6[i+4])+int(array6[i+5])+int(array6[i+6])+int(array6[i+7])+int(array6[i+8])+int(array6[i+9]))/10
-	array7.append(entry)
+# for i in range(len(array3)-15):
+	# entry = (int(array6[i])+int(array6[i+1])+int(array6[i+2])+int(array6[i+3])+int(array6[i+4])+int(array6[i+5])+int(array6[i+6])+int(array6[i+7])+int(array6[i+8])+int(array6[i+9]))/10
+	# entry = (int(array3[i])+int(array3[i+1])+int(array3[i+2])+int(array3[i+3])+int(array3[i+4])+int(array3[i+5])+int(array3[i+6])+int(array3[i+7]))
+	# array7.append(entry)
 	# logging.info(array[i])
 
 
@@ -87,6 +88,6 @@ plt.plot(array3)
 plt.subplot(3,1,2)
 plt.plot(array2)
 plt.subplot(3,1,3)
-plt.plot(array7)
+plt.plot(array6)
 # plt.ylabel('some numbers')
 plt.show()
